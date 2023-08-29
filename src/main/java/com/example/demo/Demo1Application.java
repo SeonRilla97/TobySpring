@@ -4,15 +4,17 @@ import com.example.demo.Server.*;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.DispatcherServlet;
 
 @Configuration
-@Component
+@ComponentScan
 public class Demo1Application {
 	@Bean
 	public ServletWebServerFactory servletWebServerFactory() {
+		System.out.println("메인의 Servlet생성자입니다.");
 		return new TomcatServletWebServerFactory();
 	}
 
@@ -28,9 +30,9 @@ public class Demo1Application {
 //		Server server = new DispatcherServlet사용();
 //		Server server = new SpringServlet통합();
 //		Server server = new Bean생성방법ComponentScan();
-//		최종버전.run(Demo1Application.class,args);
+		최종버전.run(Demo1Application.class,args);
 
-		발표자료_ServletCotanier가필요할까.run();
+//		발표자료_ServletCotanier가필요할까.run();
 //		server.run();
 	}
 }

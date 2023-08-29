@@ -16,8 +16,6 @@ import java.util.Objects;
  * ApplicationContextAware를 구현하면서 ApplicationContext를 setter로 받아도 되지만, 옛날 방식
  * 그냥ComponentScan 시켜도 주입할 수 있다.
  */
-@RequestMapping
-@Component
 public class 심심한데SpringContainer주입받아볼까 {
 
 
@@ -27,7 +25,7 @@ public class 심심한데SpringContainer주입받아볼까 {
     public 심심한데SpringContainer주입받아볼까(HelloService helloService, ApplicationContext applicationContext) {
         this.helloService = helloService;
         this.applicationContext = applicationContext;
-
+        System.out.println("이거는 찾아요??");
         System.out.println(applicationContext);
     }
 

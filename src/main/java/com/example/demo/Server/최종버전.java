@@ -18,7 +18,7 @@ import org.springframework.web.servlet.DispatcherServlet;
  *
  */
 
-@ComponentScan
+
 public class 최종버전 {
     public static void run(Class<?> applicationClass , String... args) {
         AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext(){
@@ -34,6 +34,7 @@ public class 최종버전 {
                 WebServer webServer = serverFactory.getWebServer(servletContext -> {
                     servletContext.addServlet("dispathcerServlet", dispatcherServlet).addMapping("/*");
                 });
+                System.out.println("부트 스타트!");
                 webServer.start();
 
             }

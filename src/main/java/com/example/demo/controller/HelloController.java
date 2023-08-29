@@ -22,13 +22,14 @@ public class HelloController implements ApplicationContextAware {
     private final HelloService helloService;
     private ApplicationContext applicationContext;
 
+    //    @RequestMapping(value="/hello", method= RequestMethod.GET)
     public HelloController(HelloService helloService) {
+        System.out.println("컨트롤러 넣니?");
         this.helloService = helloService;
     }
 
     @GetMapping("/hello")
     @ResponseBody
-//    @RequestMapping(value="/hello", method= RequestMethod.GET)
     public String hello(String name) {
         return helloService.sayHello(Objects.requireNonNull(name));
     }
