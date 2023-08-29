@@ -7,9 +7,9 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.context.support.GenericWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
 /**
@@ -18,23 +18,12 @@ import org.springframework.web.servlet.DispatcherServlet;
  * 관계를 맺을 시점 , 어느 Bean을 주입할건지?
  *
  * 정보를 줘야한다!!
+ * Bean을 주입하는 방법은?
  *
- * DI 랑 Bean 생성 알아서 해주는데 이거 왜 써야해?
- * --> 생성과정이 복잡한 경우에는 이런것이 필요함
- * --> 기존에는? 구성정보가 포함된 클래스 정보를 register 메소드의 인자로 넘겨줬음
  */
 @Configuration
-public class ApplicationContext의동작 implements Server {
-
-    @Bean
-    public HelloController helloController(HelloService helloService) {
-        return new HelloController(helloService);
-    }
-
-    @Bean
-    public HelloService helloService() {
-        return new SimpleHelloService();
-    }
+@ComponentScan
+public class Bean생성방법ComponentScan implements Server {
 
 
 
@@ -58,7 +47,7 @@ public class ApplicationContext의동작 implements Server {
 //        applicationContext.registerBean(HelloController.class); // Bean 등록
 //        applicationContext.registerBean(SimpleHelloService.class); // Bean 등록
 
-        applicationContext.register(ApplicationContext의동작.class);
+        applicationContext.register(Bean생성방법ComponentScan.class);
         //DI는 어떻게...??? ==> 생성자 호출시, 타입을 확인하고 Container의 등록정보를 뒤져서 있으면 던져준다
         applicationContext.refresh(); // Container 초기화
 

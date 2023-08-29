@@ -9,6 +9,7 @@ import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +22,7 @@ import java.io.IOException;
  * 요청을 받아 분배
  * 공통 코드 처리 (인증, 보안, 다국어 등등)
  */
+
 public class 프론트컨트롤러 implements Server{
 
     @Override

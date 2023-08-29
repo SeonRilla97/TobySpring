@@ -5,6 +5,7 @@ import com.example.demo.service.SimpleHelloService;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.web.context.support.GenericWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.DispatcherServlet;
  *  
  * Application Context 생성 후, Dispatcher Servlet 을 담고있는 Servlet Container 제작
  */
+@Component
 public class DispatcherServlet사용 implements Server {
 
     @Override

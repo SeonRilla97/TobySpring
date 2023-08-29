@@ -5,25 +5,30 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Objects;
 
 /**
- * 요청에 대한 검증
- * 응답의 형식 결정
- * 로직 호출
+ * EP7-1
+ * ApplicationContextAware를 구현하면서 ApplicationContext를 setter로 받아도 되지만, 옛날 방식
+ * 그냥ComponentScan 시켜도 주입할 수 있다.
  */
 @RequestMapping
 @Component
-public class HelloController implements ApplicationContextAware {
+public class 심심한데SpringContainer주입받아볼까 {
 
 
     private final HelloService helloService;
     private ApplicationContext applicationContext;
 
-    public HelloController(HelloService helloService) {
+    public 심심한데SpringContainer주입받아볼까(HelloService helloService, ApplicationContext applicationContext) {
         this.helloService = helloService;
+        this.applicationContext = applicationContext;
+
+        System.out.println(applicationContext);
     }
 
     @GetMapping("/hello")
@@ -33,9 +38,4 @@ public class HelloController implements ApplicationContextAware {
         return helloService.sayHello(Objects.requireNonNull(name));
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        System.out.println(applicationContext);
-        this.applicationContext = applicationContext;
-    }
 }

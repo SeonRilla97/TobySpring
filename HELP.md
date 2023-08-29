@@ -51,9 +51,51 @@ Template Method 패턴
 
 ---
 
-### ApplicationContext 가 Bean을 어떻게 관리하고 관계를 형성할까?
+### ApplicationContext 가 Bean을 생성하는 방법
 
-Factory Method 패턴 [Object를 생성하는 메소드]
+1. Factory Method 패턴 [Object를 생성하는 메소드]
+    - 공장처럼 ->  제품을 만들고 소비자가 쓰도록 던져준다
+2. Register Bean Method 이용
+3. Component Scan 이용
+4. Meta Annotation
+ - 계층별 구분을 위한 커스터마이징 어노테이션 (역할을 표현하고 싶을 때) -> Controller , Service ,RestController, Repository Configuration
 
-공장처럼 ->  제품을 만들고 소비자가 쓰도록 던져준다
 
+### Servlet Container와 Dispatcher Servlet을 생성하는 방법을 Spring Bean 등록을 통해 만들어보자
+
+왜 해야 하지??
+
+    Servlet Cotainer를 Bean 등록을 해놓으면 유연한 구성이 가능하다.
+
+그전 까지는?
+
+    Servlet Container와 dispatcherServlet을 하드코딩 시켜서 등록했다 -> 바꾸려면 코드를 수정해야한다
+    하지만 이마저도 SpringContainer가 관리하는 것으로 넘어가면? 서버를 선택할수 있지 않을까?
+
+
+
+### Spring Boot의 모양과 똑같이...
+
+최초 구성정보를 담고있는 클래스의 정보, args의 정보를 넘겨줘서 Spring App 구동시키는 메소드를 타 클래스의 정적 메소드 (Static  Method)로 따로 빼서
+
+메소드를 실행시키는 방식으로 하면 Main이 깔끔해짐 
+
+최종버전.java 를 보면 알겠지만,
+
+이를 했다고 해서, 구성정보 까지 모두 버릴 수는 없었음. -> 아마 다른클래스에서 구성정보를 등록하면 main에서는 빠질수 있어도, Servlet Container를 직접 주입하는 코드가
+사용자에게 보여진다는것은 변함이 없다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://action713.tistory.com/entry/CC-%EC%86%8C%EC%8A%A4%EC%BD%94%EB%93%9C%EB%A5%BC-%EA%B3%B5%EA%B0%9C%ED%95%98%EB%8A%94-Site-%EB%AA%A8%EC%9D%8C
